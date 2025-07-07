@@ -1,0 +1,236 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #333;
+  transition: background 1s ease;
+  overflow-x: hidden;
+}
+
+body.dark {
+  background-color: #121212;
+  color: #eee;
+}
+
+.bg-blur {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: url("assets/day.jpg") center/cover no-repeat;
+  z-index: -1;
+  filter: blur(20px) brightness(0.7);
+  transition: background-image 1s ease, filter 0.5s ease;
+}
+
+.dashboard-container {
+  display: flex;
+  width: 100%;
+  min-height: 100vh;
+}
+
+.sidebar {
+  flex: 0 0 280px;
+  background: rgba(255, 255, 255, 0.95);
+  padding: 20px;
+  border-right: 2px solid #ccc;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  z-index: 1000;
+}
+
+.sidebar h1 {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+.search input,
+.search button,
+#toggleSaved,
+#toggleTheme {
+  padding: 10px;
+  border: none;
+  border-radius: 10px;
+  font-size: 16px;
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+.search button,
+#toggleSaved,
+#toggleTheme {
+  background-color: #0077ff;
+  color: white;
+  cursor: pointer;
+}
+
+.search button:hover,
+#toggleSaved:hover,
+#toggleTheme:hover {
+  background-color: #005bcc;
+}
+
+.saved-cities h3 {
+  margin-top: 10px;
+}
+
+.city-wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #e7f3ff;
+  padding: 10px 15px;
+  border-radius: 10px;
+  margin-top: 5px;
+}
+
+.city-button {
+  background: none;
+  border: none;
+  font-size: 16px;
+  color: #0077ff;
+  cursor: pointer;
+  flex: 1;
+  text-align: left;
+}
+
+.city-button:hover {
+  text-decoration: underline;
+}
+
+.delete-button {
+  background: none;
+  border: none;
+  color: red;
+  font-size: 18px;
+  cursor: pointer;
+}
+
+.main-content {
+  flex: 1;
+  padding: 30px;
+  overflow-y: auto;
+}
+
+.weather-box {
+  background: rgba(255, 255, 255, 0.9);
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+.forecast-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  margin-top: 20px;
+}
+
+.forecast-card {
+  background: #ffffffcc;
+  padding: 15px;
+  border-radius: 12px;
+  text-align: center;
+  flex: 1 1 130px;
+  max-width: 150px;
+}
+
+.hourly-slider {
+  display: flex;
+  overflow-x: auto;
+  margin-top: 15px;
+  gap: 10px;
+}
+
+.hour-card {
+  min-width: 90px;
+  padding: 10px;
+  background: #ffffffdd;
+  border-radius: 10px;
+  text-align: center;
+}
+
+.save-btn {
+  padding: 10px 15px;
+  background-color: #00b894;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  margin-top: 10px;
+  cursor: pointer;
+}
+
+.save-btn:hover {
+  background-color: #019875;
+}
+
+/* Dark Theme */
+body.dark .sidebar {
+  background-color: rgba(34, 34, 34, 0.95);
+  color: #eee;
+}
+
+body.dark .search input,
+body.dark .search button,
+body.dark #toggleSaved,
+body.dark #toggleTheme {
+  background-color: #333;
+  color: white;
+  border: 1px solid #666;
+}
+
+body.dark .weather-box,
+body.dark .forecast-card,
+body.dark .hour-card {
+  background: rgba(50, 50, 50, 0.9);
+  color: white;
+}
+
+body.dark .city-wrapper {
+  background: #444;
+}
+
+body.dark .city-button {
+  color: #9cf;
+}
+
+/* Hamburger for small screens */
+.hamburger {
+  display: none;
+  position: fixed;
+  top: 15px;
+  left: 15px;
+  font-size: 26px;
+  background: #0077ff;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 10px 15px;
+  z-index: 1001;
+}
+
+@media (max-width: 768px) {
+  .hamburger {
+    display: block;
+  }
+
+  .sidebar {
+    position: fixed;
+    top: 0;
+    left: -100%;
+    width: 80%;
+    height: 100vh;
+    transition: left 0.3s ease;
+  }
+
+  .sidebar.show {
+    left: 0;
+  }
+
+  .main-content {
+    margin-top: 70px;
+  }
+}
